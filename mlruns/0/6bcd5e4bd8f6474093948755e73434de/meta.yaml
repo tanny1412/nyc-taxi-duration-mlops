@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tanishkandivlikar/Documents/trip-duration/trip-duration/mlruns/0/6bcd5e4bd8f6474093948755e73434de/artifacts
+end_time: 1705775472514
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6bcd5e4bd8f6474093948755e73434de
+run_name: XGBRegressor
+run_uuid: 6bcd5e4bd8f6474093948755e73434de
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1705775468486
+status: 3
+tags: []
+user_id: tanishkandivlikar
