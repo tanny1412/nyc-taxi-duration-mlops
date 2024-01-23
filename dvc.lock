@@ -10,8 +10,8 @@ stages:
       nfiles: 3
     - path: ./src/features/build_features.py
       hash: md5
-      md5: 188330c1eadccc3cd5565cad5146e749
-      size: 1082
+      md5: 1f4327b1c495cfb8e8487f51eb26b236
+      size: 1092
   train_model:
     cmd: python ./src/models/train_model.py ./data/processed/
     deps:
@@ -20,6 +20,18 @@ stages:
       md5: 355a526a0ce556f9730a01363d870709.dir
       size: 333190597
       nfiles: 3
+    - path: ./src/models/train_model.py
+      hash: md5
+      md5: c05cacd9d68760f5bac7b15bc2f57368
+      size: 3815
+  push_model:
+    cmd: python ./src/models/push_model.py ./data/processed/
+    deps:
+    - path: ./models/
+      hash: md5
+      md5: 23d9d896779a01ebb7d81935c8351152.dir
+      size: 879432
+      nfiles: 2
     - path: ./src/models/train_model.py
       hash: md5
       md5: c05cacd9d68760f5bac7b15bc2f57368
