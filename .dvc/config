@@ -1,0 +1,6 @@
+[core]
+    remote = s3-models-storage
+['remote "nyc-taxi-campusx-mlops"']
+    url = s3://nyc-taxi-campusx-mlops
+['remote "s3-models-storage"']
+    url = s3://nyc-taxi-campusx-mlops/taxi-duration-models
