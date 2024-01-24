@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1706054193961
+current_stage: None
+description: ''
+last_updated_timestamp: 1706054193961
+name: XGB Final Model
+run_id: e9e4071d1f1946e18011a240d06a45fc
+run_link: ''
+source: file:///Users/tanishkandivlikar/Documents/trip-duration/trip-duration/mlruns/0/e9e4071d1f1946e18011a240d06a45fc/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///Users/tanishkandivlikar/Documents/trip-duration/trip-duration/mlruns/0/e9e4071d1f1946e18011a240d06a45fc/artifacts/model
+user_id: null
+version: 1

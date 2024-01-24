@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/tanishkandivlikar/Documents/trip-duration/trip-duration/mlruns/0/e9e4071d1f1946e18011a240d06a45fc/artifacts
+end_time: 1705990466526
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e9e4071d1f1946e18011a240d06a45fc
+run_name: XGB Final Model
+run_uuid: e9e4071d1f1946e18011a240d06a45fc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1705990464125
+status: 3
+tags: []
+user_id: tanishkandivlikar

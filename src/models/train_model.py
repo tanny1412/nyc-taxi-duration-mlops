@@ -95,9 +95,10 @@ def main():
     X = train_features.drop(TARGET, axis=1)
     y = train_features[TARGET]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=40)
     trained_model = find_best_model_with_params(X_train, y_train, X_test, y_test)
-    save_model(trained_model, output_path)  # Pass pathlib object for path
+    save_model(trained_model, output_path)  
+    # Pass pathlib object for path
 
 
 if __name__ == "__main__":
