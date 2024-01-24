@@ -23,7 +23,7 @@ class PredictionInput(BaseModel):
 # Load the pre-trained RandomForest model
 model_path = "model.joblib"
 model = load(model_path)
-
+#hELLOS
 @app.get("/")
 def home():
     return "Working fine"
