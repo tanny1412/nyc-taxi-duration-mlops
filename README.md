@@ -1,7 +1,7 @@
 trip-duration
 ==============================
 
-project for end to end mlops new york taxi trip duration
+project for end to end mlops new york taxi trip durations
 
 Project Organization
 ------------
