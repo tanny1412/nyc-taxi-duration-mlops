@@ -1,7 +1,7 @@
 trip-duration
 ==============================
 
-project for end to end mlops new york taxi trip duration- trigg for ci/cd pipeline
+project for end to end mlops new york taxi trip duration- trigg for ci/cd pipelines
 
 Project Organization
 ------------
