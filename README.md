@@ -1,7 +1,13 @@
 trip-duration
+
+## Live Application
+
+You can access the live application and test the endpoints at the following URL:
+
+[FastAPI Live Docs](http://35.85.144.241:8080/docs)
 ==============================
 
-project for end to end mlops new york taxi trip duration- trigg for ci/cd pipelines
+project for end to end mlops new york taxi trip duration
 
 Project Organization
 ------------
