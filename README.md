@@ -4,7 +4,7 @@ trip-duration
 
 You can access the live application and test the endpoints at the following URL:
 
-[FastAPI Live Docs](http://35.85.144.241:8080/docs)
+[FastAPI Application](http://35.85.144.241:8080/docs)
 ==============================
 
 project for end to end mlops new york taxi trip duration
