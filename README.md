@@ -70,13 +70,14 @@ project for end to end mlops new york taxi trip duration
  - Docker (optional, for container builds)
 
  ### Installation
- ```bash
- git clone https://github.com/<yourusername>/trip-duration.git
- cd trip-duration
- pip install -r requirements.txt
- pip install -e .
- dvc pull           # fetch data and model artifacts
- ```
+```bash
+# Clone your renamed repository (example name: nyc-taxi-duration-mlops)
+git clone https://github.com/tanny1412/nyc-taxi-duration-mlops.git
+cd nyc-taxi-duration-mlops
+pip install -r requirements.txt
+pip install -e .
+dvc pull           # fetch data and model artifacts
+```
 
  ### Data Pipeline
  Generate and process datasets:
