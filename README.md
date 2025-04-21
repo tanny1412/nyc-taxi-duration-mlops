@@ -166,6 +166,5 @@ project for end to end mlops new york taxi trip duration
  This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
  ## Contact
-
- Created by **Your Name** ([@yourhandle](https://github.com/yourusername)).  
- Feel free to reach out at your.email@example.com.
+Created by **Tanish Kandivlikar** ([@tanny1412](https://github.com/tanny1412)).  
+Feel free to reach out at [tkandivlikar@wpi.edu](mailto:tkandivlikar@wpi.edu).
