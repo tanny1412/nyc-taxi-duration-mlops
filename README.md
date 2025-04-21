@@ -9,55 +9,163 @@ You can access the live application and test the endpoints at the following URL:
 
 project for end to end mlops new york taxi trip duration
 
-Project Organization
-------------
+ ## Table of Contents
+ - [Project Overview](#project-overview)
+ - [Key Features](#key-features)
+ - [Architecture & Technologies](#architecture--technologies)
+ - [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+   - [Data Pipeline](#data-pipeline)
+   - [Training & Experiments](#training--experiments)
+   - [Serving Predictions](#serving-predictions)
+ - [Project Structure](#project-structure)
+ - [Evaluation & Results](#evaluation--results)
+ - [Contributing](#contributing)
+ - [License](#license)
+ - [Contact](#contact)
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+ ## Project Overview
 
+ Predicting the duration of taxi rides in New York City is a classic regression problem with real-world business applications. This repository provides:
 
---------
+ - A reproducible data pipeline with DVC for versioning raw, interim, and processed datasets.
+ - Feature engineering driven by modular Python code.
+ - Model training and hyperparameter tuning with MLflow for experiment tracking.
+ - Serialization and versioning of models using DVC and MLflow Model Registry.
+ - A lightweight FastAPI service to serve predictions in real-time.
+ - Containerization with Docker for consistent deployments.
+ - CI/CD-ready structure with Makefile and tox for testing.
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+ ## Key Features
+
+ - End-to-end ML pipeline: from raw data ingestion to production-ready API.
+ - Data versioning and pipeline orchestration with DVC.
+ - Experiment tracking, logging, and model registry with MLflow.
+ - Feature engineering encapsulated in reusable modules.
+ - High-performance XGBoost models (or scikit-learn RandomForest).
+ - Automated testing and linting (pytest, flake8, mypy).
+ - Dockerized application for easy deployment.
+ - Clear project structure for collaborative development.
+
+ ## Architecture & Technologies
+
+ - **Language**: Python 3.8+
+ - **Data Versioning**: DVC
+ - **Experiment Tracking**: MLflow
+ - **Web Framework**: FastAPI & Uvicorn
+ - **Modeling**: XGBoost or scikit-learn RandomForest
+ - **Data Processing**: Pandas, NumPy
+ - **Deployment**: Docker, Makefile
+ - **Testing & CI**: pytest, tox, flake8, mypy
+
+ ## Getting Started
+
+ ### Prerequisites
+ - Git
+ - Python 3.8+
+ - pip
+ - DVC
+ - MLflow
+ - Docker (optional, for container builds)
+
+ ### Installation
+ ```bash
+ git clone https://github.com/<yourusername>/trip-duration.git
+ cd trip-duration
+ pip install -r requirements.txt
+ pip install -e .
+ dvc pull           # fetch data and model artifacts
+ ```
+
+ ### Data Pipeline
+ Generate and process datasets:
+ ```bash
+ make data
+ # or
+ dvc repro
+ ```
+ - Raw data → cleaned and split into `data/processed/train.csv` and `data/processed/test.csv`.
+
+ ### Training & Experiments
+ Train models and log experiments:
+ ```bash
+ make train
+ # or
+ python -m src.models.train_model
+ ```
+ - Hyperparameters and metrics are recorded to the MLflow server (`mlruns/`).
+ - Model artifacts are versioned with DVC.
+
+ Launch the MLflow UI to compare runs:
+ ```bash
+ mlflow ui
+ ```
+
+ ### Serving Predictions
+ Start the FastAPI service:
+ ```bash
+ uvicorn service:app --host 0.0.0.0 --port 8080
+ ```
+
+ Example request:
+ ```bash
+ curl -X POST "http://localhost:8080/predict" \
+      -H "Content-Type: application/json" \
+      -d '{
+           "vendor_id": 2,
+           "pickup_datetime": 1700000000,
+           "passenger_count": 1,
+           "pickup_longitude": -73.985,
+           "pickup_latitude": 40.748,
+           "dropoff_longitude": -73.975,
+           "dropoff_latitude": 40.752,
+           "store_and_fwd_flag": 0
+         }'
+ ```
+
+ ## Project Structure
+
+ ```text
+ .
+ ├── data/               # Data versioned by DVC
+ ├── docs/               # Sphinx docs
+ ├── mlruns/             # MLflow experiment tracking
+ ├── notebooks/          # Jupyter notebooks for exploration
+ ├── reports/            # Generated reports and figures
+ ├── service.py          # FastAPI application for inference
+ ├── src/                # Source code package
+ │   ├── data/           # Data ingestion and processing
+ │   ├── features/       # Feature engineering
+ │   ├── models/         # Training, prediction, and model deployment
+ │   └── visualization/  # Plotting utilities
+ ├── Dockerfile
+ ├── Makefile
+ ├── requirements.txt
+ ├── dvc.yaml            # DVC pipeline
+ ├── models.dvc          # DVC tracking of model artifacts
+ └── README.md
+ ```
+
+ ## Evaluation & Results
+
+ - Competitive RMSE on test set (see MLflow runs for details).
+ - Feature importance insights and visual diagnostics available under `reports/figures`.
+
+ ## Contributing
+
+ Contributions are welcome! Please follow these steps:
+ 1. Fork the repository.
+ 2. Create a new branch: `git checkout -b feature/YourFeature`.
+ 3. Make your changes and add tests.
+ 4. Ensure linting and tests pass: `make lint && make test`.
+ 5. Submit a pull request.
+
+ ## License
+
+ This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+ ## Contact
+
+ Created by **Your Name** ([@yourhandle](https://github.com/yourusername)).  
+ Feel free to reach out at your.email@example.com.
